@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omar Sehbani - Portfolio BTS SIO SISR</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #64748b;
+            --bg-light: #f8fafc;
+            --bg-card: #ffffff;
+            --text-dark: #0f172a;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --alert-color: #f59e0b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.2);
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 0.8s ease;
+        }
+        
+        header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .contact-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+        
+        /* Section */
+        section {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            animation: fadeInUp 0.6s ease;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+        }
+        
+        /* Objectif */
+        .objectif-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* Compétences Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .skill-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
+        }
+        
+        .skill-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .skill-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .skill-card li {
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .skill-card li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* Projet Cards */
+        .project-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--success);
+            transition: all 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-card .tag {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-card ul {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+        
+        .project-card li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .alert-btn {
+            background: linear-gradient(135deg, var(--alert-color), #d97706);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+            transition: all 0.3s;
+            margin: 1rem 0;
+        }
+
+        .alert-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(245, 158, 11, 0.5);
+        }
+
+        .proof-link {
+            display: inline-block;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            padding: 0.8rem 1.2rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .proof-link:hover {
+            transform: translateY(-2px);
+            background: var(--primary-dark);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Omar Sehbani</h1>
+        <p class="subtitle">BTS SIO SISR - Spécialiste Infrastructures & Cybersécurité</p>
+        <p style="font-size: 1.1rem; margin-top: 1rem;">🎯 Recherche Alternance Septembre 2026</p>
+        <div class="contact-links">
+            <a href="mailto:omar.sehbani.sio@gmail.com">📧 omar.sehbani.sio@gmail.com</a>
+            <a href="https://github.com/lafleche741" target="_blank" rel="noopener noreferrer">💻 GitHub</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>🎯 Objectif Professionnel</h2>
+            <div class="objectif-box">
+                Recherche un contrat d'<strong>alternance</strong> en tant qu'<strong>Administrateur Systèmes & Réseaux Junior</strong> ou <strong>Technicien Cybersécurité</strong> pour septembre 2026.
+                <br><br>
+                Passionné par les infrastructures réseau, la virtualisation et la sécurité informatique. Solide expérience pratique en administration systèmes Linux/Windows, déploiement Active Directory et sécurisation d'infrastructures.
+            </div>
+        </section>
+
+        <section>
+            <h2>🛠️ Compétences Techniques</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>🖥️ Systèmes</h3>
+                    <ul>
+                        <li>Linux Debian (admin serveur)</li>
+                        <li>Windows Server (AD, GPO)</li>
+                        <li>Samba4 Active Directory</li>
+                        <li>SSH</li>
+                        <li>Virtualisation Proxmox</li>
+                        <li>Gestion postes informatiques</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>🔒 Cybersécurité</h3>
+                    <ul>
+                        <li>Kali Linux (tests MitM)</li>
+                        <li>Sécurisation infrastructure</li>
+                        <li>Pare-feu Stormshield</li>
+                        <li>HTTPS / certificats SSL</li>
+                        <li>Conformité RGPD</li>
+                        <li>Veille technologique active</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>🔧 Outils & Support</h3>
+                    <ul>
+                        <li>Git / GitHub</li>
+                        <li>Discord (support 50+ élèves)</li>
+                        <li>Helpdesk L1</li>
+                        <li>HTML / CSS / SQL</li>
+                        <li>Diagnostic & résolution pannes</li>
+                        <li>Documentation technique</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>🚀 Projets</h2>
+            
+            <div class="project-card">
+                <h3>💼 Système de Facturation Automatique - Cybercafé (TrueCafe)</h3>
+                <span class="tag">Développement</span>
+                <span class="tag">Automatisation</span>
+                <p><strong>Création d'un système de facturation automatique sur les postes du cybercafé.</strong></p>
+                <a href="https://docs.google.com/document/d/1D2g9K_dxBuvVCZc9-gAn9TycYSEgV5ffHHYuh7xjSB0/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="proof-link">
+                    📄 Voir la preuve du projet
+                </a>
+                <ul>
+                    <li>Développement système automatisé de gestion temps/facturation</li>
+                    <li>Intégration avec TrueCafe pour suivi sessions clients</li>
+                    <li>Interface utilisateur intuitive pour paiements</li>
+                    <li><span class="highlight">Résultat : Réduction 70% temps gestion manuelle</span></li>
+                </ul>
+                <p><strong>Compétences mises en œuvre :</strong></p>
+                <ul>
+                    <li>1 – Gérer le patrimoine informatique</li>
+                    <li>2 – Répondre aux incidents et aux demandes d’assistance et d’évolution</li>
+                    <li>4 – Travailler en mode projet</li>
+                    <li>5 – Mettre à disposition des utilisateurs un service informatique</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <h3>🆘 Répondre aux incidents et demandes d'assistance du cybercafé</h3>
+                <span class="tag">Support</span>
+                <span class="tag">Pédagogie</span>
+                <p><strong>Prise en charge des incidents clients et création de tutoriels pour les rendre plus autonomes.</strong></p>
+                <ul>
+                    <li>Accueil et écoute des clients en difficulté (postes du cybercafé ou PC personnel)</li>
+                    <li>Résolution des problèmes courants : impression, scan, mails, Wi-Fi, fichiers illisibles</li>
+                    <li>Explication pas à pas au lieu de faire à la place du client</li>
+                    <li>Création de tutoriels simples (captures d'écran, étapes numérotées) pour les usages répétés</li>
+                    <li><span class="highlight">Objectif : réduire les incidents récurrents et rendre les clients plus autonomes</span></li>
+                </ul>
+                <p><strong>Compétences mises en œuvre :</strong></p>
+                <ul>
+                    <li>1 – Gérer le patrimoine informatique</li>
+                    <li>4 – Travailler en mode projet</li>
+                    <li>5 – Mettre à disposition des utilisateurs un service informatique</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <h3>🌐 Site Web Sécurisé - expertek.com</h3>
+                <span class="tag">Web</span>
+                <span class="tag">Sécurité</span>
+                <p><strong>Création de site web sécurisé pour le client expertek.com (plomberie)</strong></p>
+                <ul>
+                    <li>Développement site vitrine responsive HTML/CSS</li>
+                    <li>Implémentation HTTPS avec certificats SSL</li>
+                    <li>Optimisation SEO local</li>
+                    <li>Sécurisation formulaires contre injections</li>
+                    <li><span class="highlight">Augmenter la visibilité d'une entreprise sur internet</span></li>
+                </ul>
+                <p><strong>Compétences mises en œuvre :</strong></p>
+                <ul>
+                    <li>1 – Gérer le patrimoine informatique</li>
+                    <li>3 – Développer la présence en ligne de l’organisation</li>
+                    <li>4 – Travailler en mode projet</li>
+                    <li>6 – Organiser son développement professionnel</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <h3>🔐 Attaque MitM & Sécurisation Infrastructure</h3>
+                <span class="tag">Pentest</span>
+                <span class="tag">Sécurité</span>
+                <p><strong>Réalisation attaque MITM puis sécurisation complète de l'infrastructure</strong></p>
+                <ul>
+                    <li>Démonstration attaque Man-in-the-Middle avec Kali Linux</li>
+                    <li>Analyse vulnérabilités réseau identifiées</li>
+                    <li>Déploiement HTTPS sur tous les services exposés</li>
+                    <li>Formation utilisateurs bonnes pratiques sécurité</li>
+                    <li><span class="highlight">Infrastructure immunisée contre attaques MitM</span></li>
+                </ul>
+                <p><strong>Compétences mises en œuvre :</strong></p>
+                <ul>
+                    <li>2 – Répondre aux incidents et aux demandes d’assistance et d’évolution</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <h3>🛡️ Pare-feu Stormshield sur Agence Virtuelle</h3>
+                <span class="tag">Réseau</span>
+                <span class="tag">Sécurité</span>
+                <p><strong>Mise en place pare-feu Stormshield sur agence virtuelle</strong></p>
+                <ul>
+                    <li>Déploiement virtuel Stormshield SNS sous Proxmox</li>
+                    <li>Configuration règles de filtrage avancées</li>
+                    <li>Mise en place VPN site-à-site sécurisé</li>
+                    <li>Monitoring logs sécurité et alertes</li>
+                    <li><span class="highlight">Optimisation de la sécurité et le filtrage au sein d'une entreprise</span></li>
+                </ul>
+                <p><strong>Compétences mises en œuvre :</strong></p>
+                <ul>
+                    <li>1 – Gérer le patrimoine informatique</li>
+                    <li>4 – Travailler en mode projet</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <h3>🖥️ Remplacement d’un parc informatique complet</h3>
+                <span class="tag">Support</span>
+                <span class="tag">Systèmes</span>
+                <p><strong>Remplacer un parc informatique tout en maintenant l’activité professionnelle du cybercafé.</strong></p>
+                <a href="https://docs.google.com/document/d/1D2g9K_dxBuvVCZc9-gAn9TycYSEgV5ffHHYuh7xjSB0/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="proof-link">
+                    📄 Voir la preuve du projet
+                </a>
+                <ul>
+                    <li>Planification du remplacement des postes pour éviter l’interruption de service</li>
+                    <li>Mise en place progressive des nouvelles machines et migration des données clients</li>
+                    <li>Tests systématiques avant mise à disposition au public</li>
+                    <li><span class="highlight">Activité du cybercafé maintenue pendant toute l’opération</span></li>
+                </ul>
+                <p><strong>Compétences mises en œuvre :</strong></p>
+                <ul>
+                    <li>1 – Gérer le patrimoine informatique</li>
+                    <li>4 – Travailler en mode projet</li>
+                    <li>6 – Organiser son développement professionnel</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <h3>🏢 Contrôleur de Domaine Active Directory Linux</h3>
+                <span class="tag">Samba4</span>
+                <span class="tag">AD</span>
+                <span class="tag">GPO</span>
+                <p><strong>Mise en place contrôleur de domaine Active Directory sous Linux avec gestion GPO pour postes Windows</strong></p>
+                <ul>
+                    <li>Déploiement Samba4 AD sous Debian</li>
+                    <li>Automatisation création comptes élèves/profs via scripts Bash</li>
+                    <li>Mise en place GPO (Group Policy Objects) pour gestion centralisée postes Windows</li>
+                    <li>Développement portail web réinitialisation mots de passe 24/7</li>
+                    <li><span class="highlight">Annuaire opérationnel avec gestion 100% centralisée</span></li>
+                </ul>
+                <p><strong>Compétences mises en œuvre :</strong></p>
+                <ul>
+                    <li>1 – Gérer le patrimoine informatique</li>
+                    <li>2 – Répondre aux incidents et aux demandes d’assistance et d’évolution</li>
+                    <li>3 – Développer la présence en ligne de l’organisation</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>📚 Formation</h2>
+            <div class="project-card">
+                <h3>🎓 BTS SIO Option SISR</h3>
+                <span class="tag">2024-2026</span>
+                <p><strong>Services Informatiques aux Organisations - Solutions d'Infrastructure, Systèmes et Réseaux</strong></p>
+                <ul>
+                    <li>✅ Gérer le patrimoine informatique</li>
+                    <li>✅ Répondre aux incidents et demandes d'assistance</li>
+                    <li>✅ Développer la présence en ligne de l'organisation</li>
+                    <li>✅ Travailler en mode projet</li>
+                    <li>✅ Mettre à disposition des utilisateurs un service informatique</li>
+                    <li>✅ Organiser son développement professionnel</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>📈 Mon développement professionnel & projets futurs</h2>
+            <p style="margin-bottom:1.5rem;font-size:1.05rem;color:var(--text-light);">
+                Ressources pour suivre mon évolution, comprendre mon profil et découvrir les études et alternances que je vise.
+            </p>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>📄 Mon CV à jour</h3>
+                    <p>Version détaillée de mon parcours, de mes expériences au cybercafé et de mes projets en BTS SIO SISR.</p>
+                    <a href="https://lafleche741.github.io/cv.omar.sio/" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:.8rem;color:var(--primary);font-weight:600;text-decoration:none;">
+                        🔗 Voir mon CV en ligne
+                    </a>
+                </div>
+                <div class="skill-card">
+                    <h3>🔗 Mon profil LinkedIn</h3>
+                    <p>Profil professionnel avec compétences, recommandations et suivi régulier de mes projets.</p>
+                    <a href="#" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:.8rem;color:var(--primary);font-weight:600;text-decoration:none;">
+                        🔗 Accéder à mon LinkedIn (lien à venir)
+                    </a>
+                </div>
+                <div class="skill-card">
+                    <h3>🎓 Études & entreprises visées</h3>
+                    <p>Objectif : poursuivre en cybersécurité / administration systèmes & réseaux, en licence pro ou école d’ingénieur, de préférence en alternance.</p>
+                    <ul>
+                        <li>École visée : <strong>EFREI Paris</strong> (réseaux, cybersécurité).</li>
+                        <li>Licence professionnelle <strong>Infrastructures et Réseaux</strong>, en alternance ou en formation initiale.</li>
+                        <li>Entreprises/infrastructures cibles : <strong>Groupe Vitality</strong>, <strong>Amazon</strong>, <strong>Google</strong>, pôles réseaux d’<strong>Orange</strong> et de <strong>Free</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>📰 Veille Technologique</h2>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem; color: var(--text-light);">
+                Suivi quotidien des actualités cybersécurité, systèmes et réseaux pour rester à la pointe des technologies et anticiper les vulnérabilités.
+            </p>
+            
+            <div class="project-card" style="border-left: 5px solid var(--alert-color);">
+                <h3 style="color: var(--alert-color);">🔔 Google Alerts - Veille Automatisée</h3>
+                <p>Suivi automatique actualités cybersécurité, réseaux et systèmes :</p>
+                <ul style="padding-left: 1.5rem; margin: 1rem 0;">
+                    <li>Stormshield vulnérabilités</li>
+                    <li>Debian security advisories</li>
+                    <li>Windows Server patches</li>
+                    <li>Samba4 CVE</li>
+                    <li>ANSSI alertes</li>
+                </ul>
+                <div style="text-align: center; margin: 2rem 0;">
+                    <a href="https://www.google.com/alerts" target="_blank" rel="noopener noreferrer" class="alert-btn">
+                        👁️ Mes Google Alerts Live
+                    </a>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">
+                        Ouvre directement ma page Google Alerts
+                    </p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>🚨 Windows 11 : KB5077181 provoque échecs installation</h3>
+                <span class="tag">Windows</span>
+                <span class="tag">18 Février 2026</span>
+                <p><strong>Source :</strong> <a href="https://www.ginjfo.com/actualites/logiciels/windows-11/windows-11-kb5077181-provoque-des-echecs-dinstallation-et-des-problemes-reseau-20260218" target="_blank" rel="noopener noreferrer" style="color: var(--primary);">GinjFo</a></p>
+                <p style="margin-top: 1rem;">
+                    La mise à jour KB5077181 de Windows 11 pose de sérieux problèmes : échecs d'installation répétés et dysfonctionnements réseau signalés par de nombreux utilisateurs.
+                </p>
+                <ul>
+                    <li><strong>Problème :</strong> Échecs installation avec codes erreur 0x800f0922 et 0x80070002</li>
+                    <li><strong>Impact réseau :</strong> Perte connectivité Ethernet/Wi-Fi après installation</li>
+                    <li><strong>Solution temporaire :</strong> Désinstallation KB5077181 et attente patch correctif Microsoft</li>
+                </ul>
+                <p style="margin-top: 1rem; padding: 1rem; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 8px;">
+                    <strong>💡 Impact pour les admins sys :</strong> Reporter déploiement KB5077181 en production. Tester en environnement isolé avant généralisation. Surveiller annonces Microsoft pour correctif.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h3>🔐 Microsoft Edge supprime option sécurité mots de passe</h3>
+                <span class="tag">Sécurité</span>
+                <span class="tag">Février 2026</span>
+                <p><strong>Source :</strong> <a href="https://www.clubic.com/actualite-601720-microsoft-edge-va-supprimer-une-option-de-securite-liee-a-vos-mots-de-passe.html" target="_blank" rel="noopener noreferrer" style="color: var(--primary);">Clubic</a></p>
+                <p style="margin-top: 1rem;">
+                    Microsoft prévoit de supprimer l'option "Monitor Passwords" dans Edge, qui alertait les utilisateurs si leurs mots de passe étaient compromis dans des fuites de données.
+                </p>
+                <ul>
+                    <li><strong>Fonctionnalité supprimée :</strong> Surveillance automatique mots de passe compromis</li>
+                    <li><strong>Alternative proposée :</strong> Microsoft recommande utilisation Microsoft Defender</li>
+                    <li><strong>Date effective :</strong> Retrait progressif d'ici Mars 2026</li>
+                </ul>
+                <p style="margin-top: 1rem; padding: 1rem; background: #f8d7da; border-left: 4px solid #dc3545; border-radius: 8px;">
+                    <strong>⚠️ Recommandation :</strong> Migrer vers gestionnaires mots de passe tiers (Bitwarden, KeePass) ou Microsoft Defender pour entreprises. Former utilisateurs à vérifier manuellement sur <a href="https://haveibeenpwned.com" target="_blank" rel="noopener noreferrer" style="color: var(--primary);">haveibeenpwned.com</a>
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h3>💰 Windows 10 & Server 2016 : Fin support gratuit, ESU payantes</h3>
+                <span class="tag">Windows Server</span>
+                <span class="tag">Février 2026</span>
+                <p><strong>Source :</strong> <a href="https://www.generation-nt.com/actualites/microsoft-windows-10-server-2016-esu-fin-support-securite-payante-mises-jour-etendues-ltsb-migration-windows-11-cout-esu-windo-2071275" target="_blank" rel="noopener noreferrer" style="color: var(--primary);">Generation-NT</a></p>
+                <p style="margin-top: 1rem;">
+                    Microsoft met fin au support gratuit de Windows 10 et Windows Server 2016. Les entreprises devront payer des mises à jour de sécurité étendues (ESU) pour continuer à recevoir des patchs.
+                </p>
+                <ul>
+                    <li><strong>Date fin support :</strong> Octobre 2025 (déjà dépassée)</li>
+                    <li><strong>Coût ESU :</strong> Variable selon volume (de 61$ à 244$ par appareil/an)</li>
+                    <li><strong>Durée ESU :</strong> Jusqu'à 3 ans maximum (tarifs progressifs)</li>
+                    <li><strong>Alternative :</strong> Migration Windows 11 / Server 2022</li>
+                </ul>
+                <p style="margin-top: 1rem; padding: 1rem; background: #d1ecf1; border-left: 4px solid #0dcaf0; border-radius: 8px;">
+                    <strong>📊 Stratégie entreprise :</strong> Auditer parc Windows 10/Server 2016. Calculer coûts ESU vs migration. Planifier migration progressive Windows 11/Server 2022 pour éviter surcoûts ESU. Prioriser postes exposés Internet.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h3>📘 Stormshield : Configuration pare-feu professionnel</h3>
+                <span class="tag">Formation</span>
+                <span class="tag">Livre ENI</span>
+                <p><strong>Source :</strong> <a href="https://www.editions-eni.fr/livre/stormshield-configuration-et-mise-en-oeuvre-de-votre-pare-feu-9782409027727" target="_blank" rel="noopener noreferrer" style="color: var(--primary);">Éditions ENI</a></p>
+                <p style="margin-top: 1rem;">
+                    Livre de référence pour maîtriser la configuration et mise en œuvre de pare-feu Stormshield SNS (Security Network Solution) en environnement professionnel.
+                </p>
+                <ul>
+                    <li><strong>Contenu :</strong> Installation, configuration règles filtrage, VPN IPsec/SSL, haute disponibilité</li>
+                    <li><strong>Public :</strong> Administrateurs réseaux, techniciens cybersécurité, BTS SIO SISR</li>
+                    <li><strong>Applications pratiques :</strong> Configuration firewall L3/L4/L7, monitoring logs, gestion certificats</li>
+                </ul>
+                <p style="margin-top: 1rem; padding: 1rem; background: #d1ecf1; border-left: 4px solid #0dcaf0; border-radius: 8px;">
+                    <strong>📖 Utilité pour mon profil :</strong> Complète mes compétences pratiques Stormshield acquises en AP (agence virtuelle). Référence technique pour configurations avancées VPN/HA en alternance.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h3>🐧 Debian 13 : Nouvelle étape vers version finale</h3>
+                <span class="tag">Linux</span>
+                <span class="tag">Mars 2026</span>
+                <p><strong>Source :</strong> <a href="https://next.ink/brief_article/debian-13-fait-un-nouveau-pas-vers-sa-version-finale/" target="_blank" rel="noopener noreferrer" style="color: var(--primary);">Next INpact</a></p>
+                <p style="margin-top: 1rem;">
+                    Debian 13 "Trixie" progresse vers sa version stable finale avec nouvelles fonctionnalités et améliorations sécurité pour serveurs d'entreprise.
+                </p>
+                <ul>
+                    <li><strong>Nouveautés :</strong> Kernel Linux 6.6 LTS, Python 3.12, GCC 13, systemd 255</li>
+                    <li><strong>Sécurité :</strong> Patchs renforcés OpenSSH, durcissement AppArmor par défaut</li>
+                    <li><strong>Date sortie estimée :</strong> Mi-2026 (après phase freeze actuelle)</li>
+                </ul>
+                <p style="margin-top: 1rem; padding: 1rem; background: #d1ecf1; border-left: 4px solid #0dcaf0; border-radius: 8px;">
+                    <strong>🚀 Impact infrastructure :</strong> Prévoir migration Debian 12 → 13 pour serveurs Samba4 AD en production. Tester compatibilité GPO/LDAP en environnement test avant déploiement. Kernel 6.6 améliore performances virtualisation Proxmox.
+                </p>
+            </div>
+
+            <div style="background: var(--bg-light); padding: 1.5rem; border-radius: 12px; margin-top: 1.5rem;">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">📚 Sources de veille régulières</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 0.5rem 0;">🔹 <strong>Stormshield Blog</strong> - Sécurité pare-feu et infrastructure</li>
+                    <li style="padding: 0.5rem 0;">🔹 <strong>Kali Linux Changelog</strong> - Nouveaux outils pentest et exploits</li>
+                    <li style="padding: 0.5rem 0;">🔹 <strong>ANSSI Alertes</strong> - Vulnérabilités critiques France</li>
+                    <li style="padding: 0.5rem 0;">🔹 <strong>BleepingComputer</strong> - Actualités cyberattaques mondiales</li>
+                    <li style="padding: 0.5rem 0;">🔹 <strong>GitHub Security Advisories</strong> - Failles logiciels open-source</li>
+                    <li style="padding: 0.5rem 0;">🔹 <strong>Next INpact</strong> - Actualités Linux/Debian et open-source</li>
+                    <li style="padding: 0.5rem 0;">🔹 <strong>Éditions ENI</strong> - Livres techniques Stormshield, Proxmox, Samba</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p><strong>Omar Sehbani</strong> - Portfolio BTS SIO SISR 2026</p>
+        <p style="margin-top: 0.5rem;">Disponible pour alternance dès Septembre 2026 • Île-de-France</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">📧 omar.sehbani.sio@gmail.com | 💻 GitHub: lafleche741</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">Dernière mise à jour veille techno : Mars 2026</p>
+    </footer>
+</body>
+</html>
